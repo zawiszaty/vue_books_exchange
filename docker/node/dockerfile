@@ -1,0 +1,17 @@
+FROM node:9.5.0
+
+# RUN cd tmp && yarn install
+
+WORKDIR /usr/src/app
+
+ADD . /usr/src/app
+
+RUN npm run build
+RUN rm -rf ./build
+RUN rm -rf ./src
+
+ENV port=80
+
+EXPOSE 80
+
+CMD [ "npm",'start' ]
