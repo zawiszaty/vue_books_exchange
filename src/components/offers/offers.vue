@@ -50,7 +50,7 @@
                     <li>{{item['offered_book']['user']['username']}}</li>
                     <li>{{item['required_book']['name']}}</li>
                     <li>{{item['required_book']['user']['username']}}</li>
-                    <li><button>Accepted</button><button>Rejected</button></li>
+                    <li><button>Accepted</button><button>Rejectedgit </button></li>
                 </ul>
             </div>
         </div>
