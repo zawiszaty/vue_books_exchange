@@ -32,7 +32,7 @@
             </modal>
         </div>
         <div class="user-books__map">
-            2
+            <google-maps :markers="books" v-if="mapsShowGetter == 1"></google-maps>
         </div>
     </div>
 </template>
@@ -41,24 +41,28 @@
 
     import axios from 'axios';
     import modal from './../modal/modal.vue';
+    import googleMaps from './../google-maps/google-maps.vue'
 
     export default {
         name: 'panel',
         components: {
-            'modal': modal
+            'modal': modal,
+            'google-maps': googleMaps
         },
         data() {
             return {
                 books: {},
                 editBook: {},
-                showModal: false
+                showModal: false,
+                mapsShowGetter: 0
             }
         },
         methods: {
             getAllUserBooks() {
                 axios.get(`${this.$store.state.apiLink}get/user/${localStorage.getItem('userId')}/book`)
                     .then(response => {
-                        this.books = response.data
+                        this.books = response.data;
+                        this.mapsShowGetter = 1;
                     })
             },
             deleteBook(id) {
@@ -83,6 +87,8 @@
                     headers: {
                         'Authorization': 'Bearer ' + localStorage.getItem('token')
                     }
+                }).then(response => {
+                    this.getAllUserBooks();
                 })
             }
         }, created() {

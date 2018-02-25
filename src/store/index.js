@@ -9,7 +9,9 @@ export const store = new Vuex.Store({
         apiLink: "http://localhost:8080/api/",
         mapsShow: 0,
         markers: [],
-        login: 0
+        login: 0,
+        acceptedOffer: {},
+        requestedOffer: {}
     },
     getters: {
         testGetter: state => {
@@ -23,23 +25,33 @@ export const store = new Vuex.Store({
         },
         loginGetters: state => {
             return state.login
+        },
+        acceptedOfferGetters: state => {
+            return state.acceptedOffer
+        },
+        requestedOfferGetters: state => {
+            return state.requestedOffer
         }
     },
     mutations: {
-        mapsShowMutations(state){
+        mapsShowMutations(state) {
             state.mapsShow = 1
         },
         markersMutations(state, payload) {
             state.markers = payload
         },
-        loginMutations(state){
-            if (state.login === 0)
-            {
+        loginMutations(state) {
+            if (state.login === 0) {
                 state.login = 1
             } else {
                 state.login = 0
             }
-
+        },
+        acceptedOfferMutations(state, payload) {
+            state.acceptedOffer = payload
+        },
+        requestedOfferMutations(state, payload) {
+            state.requestedOffer = payload
         }
     },
     actions: {
