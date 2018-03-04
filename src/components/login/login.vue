@@ -1,13 +1,12 @@
 <template>
     <div class="login">
-        <div class="panel">
-            <form class="login__panel__form">
-                {{userData}}
-                <input type="email" v-model="userData['_username']">
-                <input type="password" v-model="userData['_password']">
-                <button type="submit" @click="login">Login</button>
-            </form>
-        </div>
+        <form class="login__panel__form">
+            <label for="login" class="login__form__label">Login</label>
+            <input type="email" id="login" v-model="userData['_username']" class="login__panel__form__item">
+            <label for="password" class="login__form__label">Password</label>
+            <input type="password" id="password" v-model="userData['_password']" class="login__panel__form__item">
+            <button type="submit" @click="login" class="login__panel__form__button">Login</button>
+        </form>
     </div>
 </template>
 
@@ -46,39 +45,24 @@
                     .catch(error => {
                         console.log(error)
                     })
+            },
+            checkAuth() {
+                axios.post(`${this.$store.state.apiLink}panel/auth`, {}, {
+                    headers: {
+                        'Authorization': 'Bearer ' + localStorage.getItem('token')
+                    }
+                }).then(response => {
+                    this.$router.push('/panel');
+                })
             }
         },
         created() {
-
+            this.checkAuth()
         }
 
     }
 </script>
 
 <style lang="sass">
-
-    .login
-        width: 100vw
-        height: 100vh
-        display: flex
-        justify-content: center
-        align-items: center
-
-        .panel
-            width: 80%
-            height: 60%
-            background-color: red
-            display: flex
-            justify-content: center
-            align-items: center
-
-        .login__panel__form
-            width: 100%
-            display: flex
-            flex-direction: column
-            justify-content: center
-            align-items: center
-            & > input
-                display: block
-                width: 80%
+    @import "login"
 </style>

@@ -50,7 +50,10 @@
                     <li>{{item['offered_book']['user']['username']}}</li>
                     <li>{{item['required_book']['name']}}</li>
                     <li>{{item['required_book']['user']['username']}}</li>
-                    <li><button>Accepted</button><button>Rejectedgit </button></li>
+                    <li>
+                        <button @click="acceptedOffer(item['idoffer'])">Accepted</button>
+                        <button>Rejectedgit </button>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -79,7 +82,8 @@
                 let id = localStorage.getItem('userId');
                 axios.get(`${this.$store.state.apiLink}get/accepted/offer/${id}`)
                     .then(response => {
-                        this.acceptedOfferMutations(response.data)
+                        this.acceptedOfferMutations(response.data);
+                        this.getRequireOffer();
                     })
             },
             getRequireOffer() {
@@ -88,10 +92,24 @@
                     .then(response => {
                         this.requestedOfferMutations(response.data)
                     })
-            },
+            }
+            ,
+            acceptedOffer(id) {
+                let data = {
+                    idoffer: id
+                };
+                console.log(data);
+                axios.post(`${this.$store.state.apiLink}panel/accepted/offer`, data, {
+                    headers: {
+                        'Authorization': 'Bearer ' + localStorage.getItem('token')
+                    }
+                }).then(response => {
+                    this.getAcceptedOffer(response.data)
+                })
+            }
         }, created() {
             this.getAcceptedOffer();
-            this.getRequireOffer();
+
         }
     }
 </script>

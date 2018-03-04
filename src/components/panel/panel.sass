@@ -1,17 +1,85 @@
 .panel
-  width: 100%
-  display: flex
-.user-books
-  width: 30%
-  min-height: 70vh
-  margin: 2em
-  background-color: gray
+  width: 100vw
   display: flex
   flex-direction: column
-  justify-content: center
+  justify-content: space-between
+  align-items: flex-start
+
+.user-books, .new-offer, .accepted-offer
+  width: 90%
+  min-height: 70vh
+  margin: 2em
+  background-color: #fcfcfc
+  display: flex
+  flex-direction: column
+  justify-content: flex-start
+  align-items: center
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)
+  overflow: hidden
+
+.user-books__header
+  display: block
+  width: 100%
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)
+  text-align: center
+  font-size: 2em
+
+.user-books__list, .new-offer__list, .accepted-offer__list
+  width: 80%
+  list-style-type: none
+  display: flex
+  flex-direction: column
+  justify-content: space-around
+  align-items: center
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)
+  margin: 0.5em
+  box-sizing: border-box
+
+.btn-user
+  background-color: #ffffff
+  outline: 0
+  border: 0
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)
+  transition: all 0.3s cubic-bezier(.25, .8, .25, 1)
+  margin: 0.3em 0
+  padding: 0.3em
+  display: inline-block
+
+.btn-user:hover
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22)
+
+.new-offer__wraper
+  width: 100%
+  display: flex
+  flex-direction: column
+  justify-content: space-around
   align-items: center
 
+.accepted
+  background-color: #4DB6AC
 
+.rejected
+  background-color: #ef5350
 
 .user-books__map
   width: 70vw
+
+.new-offer__header
+  display: block
+  width: 100%
+  text-align: center
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)
+  font-size: 2em
+.accepted-offer__header
+  display: block
+  width: 100%
+  text-align: center
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)
+  font-size: 2em
+
+@media screen and (min-width: 760px)
+  .panel
+    flex-direction: row
+
+
+

@@ -16,10 +16,8 @@
 </script>
 <style lang="sass">
     .spinner
-        width: 500px
-        height: 500px
-        border: 1em solid blue
-        border-top: 0px
+        border: 1em solid black
+        border-top: 1em solid #fcfcfc
         border-radius: 50%
         animation-name: spinnerRotate
         animation-duration: 2s

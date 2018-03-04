@@ -2,30 +2,31 @@
     <div class="panel">
         <div class="sidePanel">
             <div class="addBook">
+                <h1 class="addBook__header">
+                    Add new Book
+                </h1>
                 <form>
                     <label for="name">name</label>
-                    <input type="text" id="name" v-model="newBook['name']">
+                    <input type="text" id="name" class="addBook__form__input" v-model="newBook['name']">
                     <label for="description">description</label>
-                    <input type="text" id="description" v-model="newBook['description']">
+                    <input type="text" id="description" class="addBook__form__input" v-model="newBook['description']">
                     <label for="type">type</label>
-                    <input type="text" id="type" v-model="newBook['type']">
+                    <input type="text" id="type" class="addBook__form__input" v-model="newBook['type']">
                     <label for="address">address</label>
-                    <input id="address" v-model="newBook['address']" class="controls" type="text"
+                    <input id="address" v-model="newBook['address']"  class="addBook__form__input controls" type="text"
                            placeholder="Search your books address. Start from the street">
                     <label for="category"></label>
-                    <select id="category" v-model="newBook['categorycategory']">
+                    <select id="category" class="addBook__form__input" v-model="newBook['categorycategory']">
                         <option value="1">1</option>
                     </select>
-                    <button v-on:click="addNewBook" type="submit">Add</button>
-                    {{newBook}}
+                    <button v-on:click="addNewBook" class="btn-submit" type="submit">Add</button>
                 </form>
             </div>
 
         </div>
-        <div class="map">
-
-            <div id="map" style="width: 100%; height: 100%;"></div>
-        </div>
+        <!--<div class="map">-->
+            <!--<div id="map"></div>-->
+        <!--</div>-->
 
     </div>
 </template>
@@ -77,8 +78,8 @@
                 this.newBook['user'] = response.data.userId;
             })
         },
-        mounted:
-            function () {
+        mounted: function () {
+
                 var map = new google.maps.Map(document.getElementById('map'), {
                     center: {lat: 52.229676, lng: 21.012229},
                     zoom: 7,

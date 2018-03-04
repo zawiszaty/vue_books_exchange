@@ -26,9 +26,11 @@
 
             let userCategory = {};
 
-            let userId = localStorage.getItem('userId');
-            axios.get(`${this.$store.state.apiLink}get/user/${userId}/book`)
-                .then(response => {
+            axios.get(`${this.$store.state.apiLink}panel/get/user/book`, {
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                }
+            }).then(response => {
                     userCategory = response.data;
 
                     this.markers.forEach(item => {
@@ -74,7 +76,6 @@
                                 description: descriptionOffer.value,
                                 offeredBook: select.value,
                                 requiredBook: item.idbook,
-                                offeredUser: userId,
                                 requiredUser: item['user']['id']
                             }
                             axios.put(`${this.$store.state.apiLink}add/offer`,offer, {
@@ -98,7 +99,51 @@
                             infoWindow.open(map, marker);
                         });
                     })
-                });
+                }).catch(error => {
+                this.markers.forEach(item => {
+                    const position = new google.maps.LatLng(item['lat'], item['lng']);
+                    let infowincontent = document.createElement('div');
+                    infowincontent.className = "infowinContent"
+
+                    let name = document.createElement('p');
+                    name.textContent = item['name'];
+                    infowincontent.appendChild(name);
+
+                    let description = document.createElement('p');
+                    description.textContent = item['description'];
+                    infowincontent.appendChild(description);
+
+                    let text = document.createElement('text');
+                    text.textContent = item['address'];
+                    infowincontent.appendChild(text);
+
+                    let type = document.createElement('p');
+                    type.textContent = item['type'];
+                    infowincontent.appendChild(type);
+
+                    let descriptionOffer = document.createElement('input');
+                    infowincontent.appendChild(descriptionOffer);
+
+                    let select = document.createElement('select');
+                    infowincontent.appendChild(select);
+
+                    let addOfferButton = document.createElement('button');
+                    addOfferButton.textContent = "Send offer";
+                    addOfferButton.className = "addOfferButton";
+                    infowincontent.appendChild(addOfferButton);
+
+
+                    const marker = new google.maps.Marker({
+                        position,
+                        map
+                    });
+
+                    marker.addListener('click', function () {
+                        infoWindow.setContent(infowincontent);
+                        infoWindow.open(map, marker);
+                    });
+                })
+            });
 
 
         }
