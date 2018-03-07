@@ -35,7 +35,7 @@
   margin: 0.5em
   box-sizing: border-box
 
-.btn-user
+.btn-user, .btn-edit
   background-color: #ffffff
   outline: 0
   border: 0
@@ -44,7 +44,8 @@
   margin: 0.3em 0
   padding: 0.3em
   display: inline-block
-
+.btn-edit
+  display: block
 .btn-user:hover
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22)
 
@@ -76,7 +77,25 @@
   text-align: center
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)
   font-size: 2em
-
+.modal__input
+  display: block
+  margin: auto
+.map-editBook
+  width: 100%
+  height: 20vh
+  margin: 5em auto
+#map-editBook
+  width: 100%
+  height: 100%
+.form-group
+  position: relative
+.form-group > input
+  position: absolute
+  z-index: 1
+  top: 0
+  //
+.pac-container
+  z-index: 1000000000000000
 @media screen and (min-width: 760px)
   .panel
     flex-direction: row

@@ -18,7 +18,6 @@
 
                     <div class="modal-footer">
                         <slot name="footer">
-                            default footer
                             <button class="modal-default-button" @click="$emit('close')">
                                 OK
                             </button>
@@ -64,17 +63,28 @@
         font-family: Helvetica, Arial, sans-serif;
     }
 
-    .modal-header h3 {
+    .modal-header h1 {
         margin-top: 0;
         color: #42b983;
+        display: block;
     }
 
     .modal-body {
         margin: 20px 0;
     }
+    .modal-footer
+    {
+        padding: 2em;
+    }
 
     .modal-default-button {
         float: right;
+        background-color: #ffffff;
+        border: 0;
+        outline: 0;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+        width: 100px;
     }
 
     /*

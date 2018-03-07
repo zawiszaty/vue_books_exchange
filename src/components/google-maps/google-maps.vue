@@ -78,7 +78,7 @@
                                 requiredBook: item.idbook,
                                 requiredUser: item['user']['id']
                             }
-                            axios.put(`${this.$store.state.apiLink}add/offer`,offer, {
+                            axios.put(`${this.$store.state.apiLink}panel/add/offer`,offer, {
                                 headers: {
                                     'Authorization': 'Bearer ' + localStorage.getItem('token')
                                 }
@@ -129,7 +129,7 @@
 
                     let addOfferButton = document.createElement('button');
                     addOfferButton.textContent = "Send offer";
-                    addOfferButton.className = "addOfferButton";
+                    addOfferButton.className = "addOfferButton--disable";
                     infowincontent.appendChild(addOfferButton);
 
 

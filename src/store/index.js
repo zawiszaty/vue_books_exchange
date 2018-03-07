@@ -11,7 +11,7 @@ export const store = new Vuex.Store({
         markers: [],
         login: 0,
         acceptedOffer: {},
-        requestedOffer: {}
+        newOffer: {}
     },
     getters: {
         testGetter: state => {
@@ -29,8 +29,8 @@ export const store = new Vuex.Store({
         acceptedOfferGetters: state => {
             return state.acceptedOffer
         },
-        requestedOfferGetters: state => {
-            return state.requestedOffer
+        newOfferGetters: state => {
+            return state.newOffer
         }
     },
     mutations: {
@@ -50,8 +50,8 @@ export const store = new Vuex.Store({
         acceptedOfferMutations(state, payload) {
             state.acceptedOffer = payload
         },
-        requestedOfferMutations(state, payload) {
-            state.requestedOffer = payload
+        newOfferMutations(state, payload) {
+            state.newOffer = payload
         }
     },
     actions: {

@@ -24,9 +24,9 @@
             </div>
 
         </div>
-        <!--<div class="map">-->
-            <!--<div id="map"></div>-->
-        <!--</div>-->
+        <div class="map-addBook">
+            <div id="map-addBook"></div>
+        </div>
 
     </div>
 </template>
@@ -80,7 +80,7 @@
         },
         mounted: function () {
 
-                var map = new google.maps.Map(document.getElementById('map'), {
+                var map = new google.maps.Map(document.getElementById('map-addBook'), {
                     center: {lat: 52.229676, lng: 21.012229},
                     zoom: 7,
                     mapTypeId: 'roadmap'

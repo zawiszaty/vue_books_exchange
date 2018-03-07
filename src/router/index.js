@@ -4,7 +4,7 @@ import Home from '@/components/Home'
 import login from '@/components/login/login'
 import addBook from '@/components/addBook/addBook'
 import panel from '@/components/panel/panel'
-import offers from '@/components/offers/offers'
+import register from '@/components/register/register'
 
 Vue.use(Router)
 
@@ -31,9 +31,9 @@ export default new Router({
             component: panel
         },
         {
-            path: '/panel/offers',
-            name: 'offers',
-            component: offers
+            path: '/register',
+            name: 'register',
+            component: register
         }
     ]
 })
