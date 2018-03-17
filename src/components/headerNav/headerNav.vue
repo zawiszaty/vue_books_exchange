@@ -4,6 +4,7 @@
         <div class="headerNav__nav__userPanel">
             <router-link to="/login" class="headerNav__nav__userPanel__item" v-if="loginGetters == 0">Login</router-link>
             <button v-else="" @click="logout" class="headerNav__nav__userPanel__item">logout</button>
+            <router-link to="/panel" class="headerNav__nav__userPanel__item" v-if="loginGetters == 1">Panel</router-link>
             <router-link to="/panel/addbook" class="headerNav__nav__userPanel__item" v-if="loginGetters == 1">Add Book</router-link>
             <router-link to="/register" class="headerNav__nav__userPanel__item"  v-if="loginGetters == 0">Register</router-link>
         </div>

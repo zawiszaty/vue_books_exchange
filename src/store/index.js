@@ -10,7 +10,7 @@ export const store = new Vuex.Store({
         mapsShow: 0,
         markers: [],
         login: 0,
-        acceptedOffer: {},
+        sendedOffer: {},
         newOffer: {}
     },
     getters: {
@@ -26,8 +26,8 @@ export const store = new Vuex.Store({
         loginGetters: state => {
             return state.login
         },
-        acceptedOfferGetters: state => {
-            return state.acceptedOffer
+        sendedOfferGetters: state => {
+            return state.sendedOffer
         },
         newOfferGetters: state => {
             return state.newOffer
@@ -46,8 +46,8 @@ export const store = new Vuex.Store({
         logoutMutations(state) {
             state.login = 0
         },
-        acceptedOfferMutations(state, payload) {
-            state.acceptedOffer = payload
+        sendedOffer(state, payload) {
+            state.sendedOffer = payload
         },
         newOfferMutations(state, payload) {
             state.newOffer = payload

@@ -4,31 +4,32 @@
         <spinner class="user-books__spinner" v-if="check == 0"></spinner>
         <div class="new-offer" v-if="check == 1">
             <h1 class="new-offer__header">Offers Send</h1>
-            <spinner class="user-books__spinner" v-if="new_offer == 0"></spinner>
-            <div v-for="item in acceptedOfferGetters" class="new-offer__wraper" v-else="">
+            <spinner class="user-books__spinner" v-if="send_offer == 0"></spinner>
+            <div v-for="item in sendedOfferGetters" class="new-offer__wraper" v-else="">
                 <ul class="accepted new-offer__list" v-if="item['accepted'] == 1">
-                    <li>{{item['offered_book']['name']}}</li>
-                    <li>{{item['offered_book']['user']['username']}}</li>
-                    <li>{{item['required_book']['name']}}</li>
-                    <li>{{item['required_book']['user']['username']}}</li>
-                    <li v-if="item['seen'] == 1">Seen: Yes</li>
-                    <li v-else="">Seen: No</li>
+                    <li>Offered Book: <b>{{item['offered_book']['name']}}</b></li>
+                    <li>Offered User: <b>{{item['offered_book']['user']['username']}}</b></li>
+                    <li>Required Book: <b>{{item['required_book']['name']}}</b></li>
+                    <li>Required User: <b>{{item['required_book']['user']['username']}}</b></li>
+                    <li v-if="item['seen'] == 1">Seen: <b>Yes</b></li>
+                    <li v-else=""><b>Seen: No</b></li>
+                    <li>Please contact him by email: <b>{{item['required_book']['user']['email']}}</b></li>
                 </ul>
                 <ul class="rejected new-offer__list" v-else-if="item['rejected'] == 1">
-                    <li>{{item['offered_book']['name']}}</li>
-                    <li>{{item['offered_book']['user']['username']}}</li>
-                    <li>{{item['required_book']['name']}}</li>
-                    <li>{{item['required_book']['user']['username']}}</li>
-                    <li v-if="item['seen'] == 1">Seen: Yes</li>
+                    <li>Offered Book: <b>{{item['offered_book']['name']}}</b></li>
+                    <li>Offered User: <b>{{item['offered_book']['user']['username']}}</b></li>
+                    <li>Required Book: <b>{{item['required_book']['name']}}</b></li>
+                    <li>Required User: <b>{{item['required_book']['user']['username']}}</b></li>
+                    <li v-if="item['seen'] == 1">Seen: <b>Yes</b></li>
                     <li v-else="">Seen: No</li>
                 </ul>
                 <ul v-else="" class="new-offer__list">
-                    <li>{{item['offered_book']['name']}}</li>
-                    <li>{{item['offered_book']['user']['username']}}</li>
-                    <li>{{item['required_book']['name']}}</li>
-                    <li>{{item['required_book']['user']['username']}}</li>
-                    <li v-if="item['seen'] == 1">Seen: Yes</li>
-                    <li v-else="">Seen: No</li>
+                    <li>Offered Book: <b>{{item['offered_book']['name']}}</b></li>
+                    <li>Offered User: <b>{{item['offered_book']['user']['username']}}</b></li>
+                    <li>Required Book: <b>{{item['required_book']['name']}}</b></li>
+                    <li>Required User: <b>{{item['required_book']['user']['username']}}</b></li>
+                    <li v-if="item['seen'] == 1">Seen: <b>Yes</b></li>
+                    <li v-else="">Seen: <b>No</b>></li>
                 </ul>
             </div>
         </div>
@@ -37,27 +38,27 @@
             <spinner class="user-books__spinner" v-if="new_offer == 0"></spinner>
             <div v-for="item in newOfferGetters" class="new-offer__wraper" v-else="">
                 <ul class="accepted accepted-offer__list" v-if="item['accepted'] == 1">
-                    <li>{{item['offered_book']['name']}}</li>
-                    <li>{{item['offered_book']['user']['username']}}</li>
-                    <li>{{item['required_book']['name']}}</li>
-                    <li>{{item['required_book']['user']['username']}}</li>
+                    <li>Offered Book: <b>{{item['offered_book']['name']}}</b></li>
+                    <li>Offered User: <b>{{item['offered_book']['user']['username']}}</b></li>
+                    <li>Required Book: <b>{{item['required_book']['name']}}</b></li>
+                    <li>Required User: <b>{{item['required_book']['user']['username']}}</b></li>
 
                 </ul>
                 <ul class="rejected accepted-offer__list" v-else-if="item['rejected'] == 1">
-                    <li>{{item['offered_book']['name']}}</li>
-                    <li>{{item['offered_book']['user']['username']}}</li>
-                    <li>{{item['required_book']['name']}}</li>
-                    <li>{{item['required_book']['user']['username']}}</li>
+                    <li>Offered Book: <b>{{item['offered_book']['name']}}</b></li>
+                    <li>Offered User: <b>{{item['offered_book']['user']['username']}}</b></li>
+                    <li>Required Book: <b>{{item['required_book']['name']}}</b></li>
+                    <li>Required User: <b>{{item['required_book']['user']['username']}}</b></li>
 
                 </ul>
                 <ul v-else="" class="accepted-offer__list">
-                    <li>{{item['offered_book']['name']}}</li>
-                    <li>{{item['offered_book']['user']['username']}}</li>
-                    <li>{{item['required_book']['name']}}</li>
-                    <li>{{item['required_book']['user']['username']}}</li>
+                    <li>Offered Book: <b>{{item['offered_book']['name']}}</b></li>
+                    <li>Offered User: <b>{{item['offered_book']['user']['username']}}</b></li>
+                    <li>Required Book: <b>{{item['required_book']['name']}}</b></li>
+                    <li>Required User: <b>{{item['required_book']['user']['username']}}</b></li>
                     <li>
                         <button @click="acceptedOffer(item['idoffer'])" class="btn-user">Accepted</button>
-                        <button class="btn-user" @click="rejectedOffer(item['idoffer'])">Rejected </button>
+                        <button class="btn-user" @click="rejectedOffer(item['idoffer'])">Rejected</button>
                     </li>
                 </ul>
             </div>
@@ -81,7 +82,7 @@
                     <input type="text" id="name" v-model="editBook['name']" class="modal__input">
                     <label for="description">description</label>
                     <input type="text" id="description" v-model="editBook['description']" class="modal__input">
-                    <label for="type">type</label>
+                    <label for="type">House type</label>
                     <input type="text" id="type" v-model="editBook['type']" class="modal__input">
                     <div class="form-group">
                         <label for="edit-address">address</label>
@@ -105,10 +106,12 @@
 
     import axios from 'axios';
     import modal from './../modal/modal.vue';
-    import googleMaps from './../google-maps/google-maps.vue'
-    import spinner from './../spinner/spinner.vue'
-    import {mapMutations} from 'vuex'
-    import {mapGetters} from 'vuex'
+    import googleMaps from './../google-maps/google-maps.vue';
+    import spinner from './../spinner/spinner.vue';
+    import {mapMutations} from 'vuex';
+    import {mapGetters} from 'vuex';
+    import swal from 'sweetalert';
+
 
     export default {
         name: 'panel',
@@ -119,7 +122,7 @@
         },
         computed: {
             ...mapGetters([
-                'acceptedOfferGetters',
+                'sendedOfferGetters',
                 'newOfferGetters',
             ])
         },
@@ -131,12 +134,13 @@
                 mapsShowGetter: 0,
                 user_books: 0,
                 new_offer: 0,
-                check: 0
+                send_offer: 0,
+                check: 0,
             }
         },
         methods: {
             ...mapMutations([
-                'acceptedOfferMutations',
+                'sendedOffer',
                 'newOfferMutations',
                 'loginMutations',
             ]),
@@ -147,8 +151,9 @@
                     }
                 })
                     .then(response => {
-                        this.acceptedOfferMutations(response.data);
-                        this.new_offer = 1;
+                        // this.$store.state.sendedOffer = response.data;
+                        this.sendedOffer(response.data);
+                        this.send_offer = 1;
                         this.getNewOffer();
 
                     })
@@ -181,7 +186,7 @@
                     }
                 }).then(response => {
                     this.newOfferMutations(response.data);
-                    this.new_offer = 1
+                    this.new_offer = 1;
                     this.seenNewOffer();
 
                 })
@@ -202,6 +207,11 @@
                 axios.delete(`${this.$store.state.apiLink}delete/${id}/book`)
                     .then(response => {
                         this.getAllUserBooks()
+                        swal({
+                            title: "The book was removed",
+                            icon: "success",
+                            button: "Close",
+                        });
                     })
             },
             getSingleBook(id) {
@@ -217,31 +227,48 @@
             sendEditBook(e) {
                 e.preventDefault();
                 let input = document.querySelector('#edit-address');
-                this.editBook['lat'] = bookLat;
-                this.editBook['lng'] = bookLng;
+                if (bookLat != 0) {
+                    this.editBook['lat'] = bookLat;
+                }
+                if (bookLng != 0) {
+                    this.editBook['lng'] = bookLng;a
+                }
+
+
                 this.editBook['address'] = input.value;
 
-                axios.post(`${this.$store.state.apiLink}edit/book`, this.editBook, {
+                axios.post(`${this.$store.state.apiLink}panel/edit/book`, this.editBook, {
                     headers: {
                         'Authorization': 'Bearer ' + localStorage.getItem('token')
                     }
                 }).then(response => {
                     this.getAllUserBooks();
+                    swal({
+                        title: "The book was edited",
+                        icon: "success",
+                        button: "Close",
+                    });
+                }).catch(e => {
+                    swal({
+                        title: "error",
+                        icon: "error",
+                        button: "Close",
+                    });
                 })
             },
             checkAuth() {
-                axios.post(`${this.$store.state.apiLink}panel/auth`, {}, {
-                    headers: {
-                        'Authorization': 'Bearer ' + localStorage.getItem('token')
-                    }
-                }).then(response => {
-                    this.check = 1;
-                    this.getAllUserBooks();
-                    this.getAcceptedOffer();
-                    this.loginMutations();
-                }).catch(error => {
-                    this.$router.push('/login');
-                })
+                    axios.post(`${this.$store.state.apiLink}panel/auth`, {}, {
+                        headers: {
+                            'Authorization': 'Bearer ' + localStorage.getItem('token')
+                        }
+                    }).then(response => {
+                        this.check = 1;
+                        this.getAllUserBooks();
+                        this.getAcceptedOffer();
+                        this.loginMutations();
+                    }).catch(error => {
+                        this.$router.push('/login');
+                    })
 
             },
             acceptedOffer(id) {
@@ -254,6 +281,11 @@
                     }
                 }).then(response => {
                     this.getNewOffer()
+                    swal({
+                        title: "The offer was accepted",
+                        icon: "success",
+                        button: "Close",
+                    });
                 })
             },
             rejectedOffer(id) {
@@ -267,6 +299,11 @@
                     }
                 }).then(response => {
                     this.getNewOffer();
+                    swal({
+                        title: "The offer was rejected",
+                        icon: "success",
+                        button: "Close",
+                    });
                 })
             },
             google_map() {

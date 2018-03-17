@@ -15,6 +15,7 @@
     import {mapGetters} from 'vuex'
     import {mapMutations} from 'vuex'
     import axios from 'axios'
+    import swal from 'sweetalert'
 
     export default {
         name: 'login',
@@ -43,7 +44,11 @@
                         this.$router.push('/panel');
                     })
                     .catch(error => {
-                        console.log(error)
+                        swal({
+                            title: "error",
+                            icon: "error",
+                            button: "Close",
+                        });
                     })
             },
             checkAuth() {
